@@ -6,7 +6,7 @@
 #    By: vgallois <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/20 23:53:53 by vgallois          #+#    #+#              #
-#    Updated: 2017/10/30 01:28:36 by vgallois         ###   ########.fr        #
+#    Updated: 2017/10/30 03:23:27 by vgallois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRC		= main.c \
 		  map.c \
 		  draw.c \
 		  cast.c \
-		  color.c \
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
