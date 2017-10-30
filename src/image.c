@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 20:56:51 by vgallois          #+#    #+#             */
-/*   Updated: 2017/10/30 02:11:11 by vgallois         ###   ########.fr       */
+/*   Updated: 2017/10/30 03:32:24 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ void	image_set_pixel(t_image *image, int x, int y, int color)
 	if (x < 0 || x >= image->w || y < 0 || y >= image->h)
 		return ;
 	*(int *)(image->ptr + ((x + y * image->w) * image->bpp)) = color;
+}
+
+t_color	get_pixel(t_image *image, int x, int y)
+{
+	if (x < 0 || y < 0 || x >= image->w || y >= image->h)
+		return((t_color)0x0);
+	return ((t_color)*(int *)(image->ptr + ((x + y * image->w) * image->bpp)));
 }
 
 void	clear_image(t_image *image)

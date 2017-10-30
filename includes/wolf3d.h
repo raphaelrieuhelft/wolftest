@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 18:40:42 by vgallois          #+#    #+#             */
-/*   Updated: 2017/10/30 02:36:32 by vgallois         ###   ########.fr       */
+/*   Updated: 2017/10/30 03:35:00 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include <stdint.h>
 # include <stdio.h>
-# define MAP_WIDTH 50
-# define MAP_HEIGHT 50
+# define MAP_WIDTH 25
+# define MAP_HEIGHT 25
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
-# define VIEW_DIST 50 
+# define VIEW_DIST 25
 
 typedef struct	s_rgba
 {
@@ -101,6 +101,7 @@ typedef struct	s_mlx
 	t_map		*map;
 }				t_mlx;
 
+void		draw_minimap(t_mlx *mlx);
 t_mlx		*init(char *title);
 t_image		*del_image(t_mlx *mlx, t_image *img);
 void		clear_image(t_image *img);

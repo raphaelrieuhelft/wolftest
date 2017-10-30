@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/29 20:59:18 by vgallois          #+#    #+#             */
-/*   Updated: 2017/10/30 02:42:10 by vgallois         ###   ########.fr       */
+/*   Updated: 2017/10/30 03:39:49 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_map	*init_map(void)
 		while (j < MAP_WIDTH)
 		{
 			if (i == 0 || j == 0 || i == MAP_HEIGHT - 1
-				|| j == MAP_WIDTH - 1)
+				|| j == MAP_WIDTH - 1 || (i == 3 && j > 3 && j < 9))
 				m->value[i][j] = 1;
 			else
 				m->value[i][j] = 0;
@@ -72,6 +72,5 @@ t_map	*init_map(void)
 		}
 		i++;
 	}
-	m->value[5][0] = 0;
 	return (m);
 }

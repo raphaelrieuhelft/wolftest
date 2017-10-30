@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/29 21:23:36 by vgallois          #+#    #+#             */
-/*   Updated: 2017/10/30 03:20:45 by vgallois         ###   ########.fr       */
+/*   Updated: 2017/10/30 03:33:37 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void			render(t_mlx *mlx)
 		draw_column(mlx, &ray, x);
 		x++;
 	}
+	draw_minimap(mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->image->image, 0, 0);
 }
