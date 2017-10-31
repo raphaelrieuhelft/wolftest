@@ -6,12 +6,13 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/29 20:59:18 by vgallois          #+#    #+#             */
-/*   Updated: 2017/10/30 03:39:49 by vgallois         ###   ########.fr       */
+/*   Updated: 2017/10/31 04:19:18 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include "libft.h"
+#include <math.h>
 
 int		get_tile(t_map *m, int x, int y)
 {
@@ -45,7 +46,29 @@ t_map	*new_map(void)
 		i++;
 	}
 	return (m);
-	
+}
+
+void	wall(int p1, int p2, t_map *m)
+{
+	int x;
+	int x1;
+	int x2;
+	int y1;
+	int y2;
+
+	x1 = p1 / 100;
+	y1 = p1 % 100;
+	x2 = p2 / 100;
+	y2 = p2 % 100;
+	y2 = (y2 > MAP_HEIGHT - 2 ? MAP_HEIGHT - 2 : y2);
+	x2 = (x2 > MAP_WIDTH - 2 ? MAP_WIDTH - 2 : x2);
+	while (y1 <= y2)
+	{
+		x = x1;
+		while (x <= x2)
+			m->value[y1][x++] = 0;
+		y1++;
+	}
 }
 
 t_map	*init_map(void)
@@ -62,15 +85,16 @@ t_map	*init_map(void)
 	{
 		j = 0;
 		while (j < MAP_WIDTH)
-		{
-			if (i == 0 || j == 0 || i == MAP_HEIGHT - 1
-				|| j == MAP_WIDTH - 1 || (i == 3 && j > 3 && j < 9))
-				m->value[i][j] = 1;
-			else
-				m->value[i][j] = 0;
-			j++;
-		}
+			m->value[i][j++] = 1;
 		i++;
 	}
+	wall(101, 1001, m);
+	wall(501, 505, m);
+	wall(301, 308, m);
+	wall(103, 303, m);
+	wall(103, 115, m);
+	wall(507, 1501, m);
+	wall(110, 510, m);
+	wall(507, 1515, m);
 	return (m);
 }

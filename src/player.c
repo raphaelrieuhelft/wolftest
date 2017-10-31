@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 23:13:07 by vgallois          #+#    #+#             */
-/*   Updated: 2017/10/30 02:34:25 by vgallois         ###   ########.fr       */
+/*   Updated: 2017/10/31 03:54:15 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	rotate(t_vector *v, float angle)
 	x = v->x;
 	c = cos(angle);
 	s = sin(angle);
-	v->x = v->x *c -v->y * s;
+	v->x = v->x * c - v->y * s;
 	v->y = x * s + v->y * c;
 }
 
@@ -47,6 +47,6 @@ void		move_player(t_player *p, t_map *m, float distance)
 {
 	if (!get_tile(m, p->x + distance * p->d.x, p->y))
 		p->x += distance * p->d.x;
-	if (!get_tile(m, p->x, distance + p->y * p->d.y))
+	if (!get_tile(m, p->x, p->y + distance * p->d.y))
 		p->y += distance * p->d.y;
 }

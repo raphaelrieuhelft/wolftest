@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 20:56:51 by vgallois          #+#    #+#             */
-/*   Updated: 2017/10/30 03:32:24 by vgallois         ###   ########.fr       */
+/*   Updated: 2017/10/31 03:53:05 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@
 
 void	image_set_pixel(t_image *image, int x, int y, int color)
 {
-	if (x < 0 || x >= image->w || y < 0 || y >= image->h)
+	if (x < 0 || x >= image->width || y < 0 || y >= image->height)
 		return ;
-	*(int *)(image->ptr + ((x + y * image->w) * image->bpp)) = color;
+	*(int *)(image->ptr + ((x + y * image->width) * image->bpp)) = color;
 }
 
 t_color	get_pixel(t_image *image, int x, int y)
 {
-	if (x < 0 || y < 0 || x >= image->w || y >= image->h)
-		return((t_color)0x0);
-	return ((t_color)*(int *)(image->ptr + ((x + y * image->w) * image->bpp)));
+	if (x < 0 || y < 0 || x >= image->width || y >= image->height)
+		return ((t_color)0x0);
+	return ((t_color)*(int *)(image->ptr + ((x + y * image->width)
+		* image->bpp)));
 }
 
 void	clear_image(t_image *image)
@@ -55,7 +56,7 @@ t_image	*new_image(t_mlx *mlx, int w, int h)
 	img->ptr = mlx_get_data_addr(img->image, &img->bpp, &img->stride,
 			&img->endian);
 	img->bpp /= 8;
-	img->w = w;
-	img->h = h;
+	img->width = w;
+	img->height = h;
 	return (img);
 }

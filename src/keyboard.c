@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 22:47:24 by vgallois          #+#    #+#             */
-/*   Updated: 2017/10/30 03:37:31 by vgallois         ###   ########.fr       */
+/*   Updated: 2017/10/31 03:46:42 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int		hook_keydown(int key, t_mlx *mlx)
 	if (!mlx)
 		return (0);
 	if (key == K_ESC)
+	{
+		system("killall afplay &");
 		exit(EXIT_SUCCESS);
+	}
 	if (key == K_LEFT)
 		rotate_player(&mlx->player, -6.0f / 180.0f * 3.1416);
 	if (key == K_RIGHT)

@@ -6,7 +6,7 @@
 /*   By: vgallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 00:15:41 by vgallois          #+#    #+#             */
-/*   Updated: 2017/10/30 02:40:32 by vgallois         ###   ########.fr       */
+/*   Updated: 2017/10/31 03:53:19 by vgallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,14 @@ static int	hittest(t_ray *r, t_cast *t, t_map *m)
 			r->side = 1;
 		}
 		if (t->mx < 0 || t->my < 0 || t->mx >= m->w || t->my >= m->h)
-		{;
-			break;}
+			break ;
 		hit = get_tile(m, t->mx, t->my);
 		blockdist++;
 	}
 	return (hit);
 }
 
-void		cast(t_ray *r, t_map *m, t_player *p)
+void		cast(t_ray *r, t_map *m, t_player *p, t_image *tex[])
 {
 	t_cast	t;
 	int		hit;
@@ -70,8 +69,10 @@ void		cast(t_ray *r, t_map *m, t_player *p)
 		r->dist = (r->side ? (t.my - p->y + (1 - t.stepy) / 2) / r->y :
 				(t.mx - p->x + (1 - t.stepx) / 2) / r->x);
 		r->height = (int)floor(WIN_HEIGHT / r->dist);
+		r->texture = tex[hit];
 		t.wall = (r->side ? p->x + r->dist * r->x : p->y + r->dist * r->y);
 		t.wall -= floor(t.wall);
+		r->tex_x = (int)(t.wall * r->texture->width);
 		castfloor(r, &t);
 	}
 }
