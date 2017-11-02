@@ -25,9 +25,9 @@ int		hook_keydown(int key, t_mlx *mlx)
 		exit(EXIT_SUCCESS);
 	}
 	if (key == K_LEFT)
-		rotate_player(&mlx->player, -6.0f / 180.0f * 3.1416);
+		rotate_player(&mlx->player, -6.0f / 180.0f * M_PI);
 	if (key == K_RIGHT)
-		rotate_player(&mlx->player, 6.0 / 180.0f * 3.1416);
+		rotate_player(&mlx->player, 6.0 / 180.0f * M_PI);
 	if (key == K_UP)
 		move_player(&mlx->player, mlx->map, 0.2f);
 	if (key == K_DOWN)
